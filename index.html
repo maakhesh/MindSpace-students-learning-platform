@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MindSpace - EdTech Student Learning Platform</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <!-- AUTHENTICATION SCREEN -->
+    <div id="auth-screen" class="auth-wrapper">
+        <div class="auth-box card">
+            
+            <!-- Login -->
+            <div id="view-login" class="auth-view active">
+                <div class="text-center mb-8">
+                    <h2 class="color-green">MindSpace.</h2>
+                    <p>Welcome back to your learning hub.</p>
+                </div>
+                <form id="form-login">
+                    <div class="form-group">
+                        <label>Email Address</label>
+                        <input type="email" id="login-email" class="form-control" required placeholder="alex@example.com">
+                    </div>
+                    <div class="form-group">
+                        <label>Password</label>
+                        <input type="password" class="form-control" required placeholder="••••••••">
+                    </div>
+                    <button type="submit" class="btn-primary w-100" style="width: 100%;">Sign In</button>
+                </form>
+                <div class="text-center mt-4">
+                    <p>Don't have an account? <a href="#" id="btn-to-register" class="color-yellow">Register here</a></p>
+                    <p class="mt-4"><a href="#" class="color-green">Forgot Password?</a></p>
+                </div>
+            </div>
+
+            <!-- Register -->
+            <div id="view-register" class="auth-view">
+                <div class="text-center mb-8">
+                    <h2 class="color-green">Create Account</h2>
+                    <p>Start your learning journey today.</p>
+                </div>
+                <form id="form-register">
+                    <div class="form-group">
+                        <label>Full Name</label>
+                        <input type="text" id="reg-name" class="form-control" required placeholder="Alex Mercer">
+                    </div>
+                    <div class="form-group">
+                        <label>Email Address</label>
+                        <input type="email" id="reg-email" class="form-control" required placeholder="alex@example.com">
+                    </div>
+                    <div class="form-group">
+                        <label>Password</label>
+                        <input type="password" class="form-control" required placeholder="Create a strong password">
+                    </div>
+                    <button type="submit" class="btn-primary" style="width: 100%;">Create Account</button>
+                </form>
+                <div class="text-center mt-4">
+                    <p>Already have an account? <a href="#" id="btn-to-login" class="color-yellow">Login here</a></p>
+                </div>
+            </div>
+
+            <!-- First Login Questionnaire -->
+            <div id="view-first-login" class="auth-view">
+                <div class="text-center mb-8">
+                    <h2 class="color-yellow">Welcome to MindSpace!</h2>
+                    <p>Let's personalize your learning roadmap.</p>
+                </div>
+                <form id="form-first-login">
+                    <div class="form-group">
+                        <label>College/University</label>
+                        <input type="text" id="fl-college" class="form-control" required placeholder="Stanford University">
+                    </div>
+                    <div class="form-group">
+                        <label>Branch / Major</label>
+                        <input type="text" id="fl-branch" class="form-control" required placeholder="Computer Science">
+                    </div>
+                    <div class="form-group">
+                        <label>Current Year</label>
+                        <select id="fl-year" class="form-control" required>
+                            <option value="1">1st Year</option><option value="2">2nd Year</option>
+                            <option value="3">3rd Year</option><option value="4">4th Year</option>
+                            <option value="Graduated">Graduated</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Career Goal (Crucial for Roadmap)</label>
+                        <select id="fl-goal" class="form-control" required>
+                            <option value="Software Engineer">Software Engineer</option>
+                            <option value="AI Engineer">AI Engineer</option>
+                            <option value="Machine Learning Engineer">Machine Learning Engineer</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Coding Experience</label>
+                        <select class="form-control"><option>Beginner</option><option>Intermediate</option><option>Advanced</option></select>
+                    </div>
+                    <div class="form-group">
+                        <label>Daily Study Time Commitment</label>
+                        <select class="form-control"><option>1 Hour</option><option>2-3 Hours</option><option>4+ Hours</option></select>
+                    </div>
+                    <button type="submit" class="btn-accent" style="width: 100%; border:none; padding:12px; border-radius:8px; font-weight:bold; cursor:pointer;">Generate My Roadmap</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- MAIN APP LAYOUT -->
+    <div id="main-layout" class="app-container" style="display: none;">
+        
+        <!-- LEFT SIDEBAR -->
+        <aside class="sidebar">
+            <div class="brand">
+                <div class="brand-icon">M</div>
+                MindSpace<span>.</span>
+            </div>
+            
+            <nav class="nav-menu">
+                <div class="nav-section-title">Menu</div>
+                <a href="#" class="nav-link active" data-view="dashboard">🏠 Dashboard</a>
+                <a href="#" class="nav-link" data-view="courses">📚 Courses</a>
+                <a href="#" class="nav-link" data-view="roadmap">🗺️ Career Roadmap</a>
+                <a href="#" class="nav-link" data-view="dsa">🧩 DSA Practice</a>
+                <a href="#" class="nav-link" data-view="compiler">💻 Python Compiler</a>
+                
+                <div class="nav-section-title">Tools & Support</div>
+                <a href="#" class="nav-link" data-view="ai-helper">✨ AI Helper</a>
+                <a href="#" class="nav-link" data-view="todo">📋 To-Do List</a>
+                <a href="#" class="nav-link" data-view="expert">📞 Expert Guidance</a>
+                
+                <div class="nav-section-title">Account</div>
+                <a href="#" class="nav-link" data-view="profile">👤 Profile</a>
+                <a href="#" class="nav-link" data-view="analytics">📊 Analytics</a>
+                <a href="#" class="nav-link" id="btn-logout">🚪 Logout</a>
+            </nav>
+            
+            <div class="sidebar-footer">
+                <div style="display:flex; align-items:center; gap:12px;">
+                    <div id="nav-profile-avatar" style="width:40px; height:40px; background:var(--accent-green); color:#000; border-radius:50%; display:flex; align-items:center; justify-content:center; font-weight:bold;">S</div>
+                    <div>
+                        <div id="nav-profile-name" style="font-weight:600; font-size:0.9rem;">Student</div>
+                        <div id="nav-profile-role" style="font-size:0.8rem; color:var(--text-secondary);">Goal</div>
+                    </div>
+                </div>
+            </div>
+        </aside>
+
+        <!-- MAIN CONTENT -->
+        <main class="main-content">
+            
+            <!-- Dashboard View -->
+            <section id="view-dashboard" class="view-section active">
+                <h1 class="mb-8">Welcome back, Let's build your future.</h1>
+                
+                <div class="dashboard-grid">
+                    <div class="card stat-card">
+                        <span class="label">Current Level</span>
+                        <span class="value stat-level">1</span>
+                        <div class="progress-container"><div id="dash-xp-progress" class="progress-fill" style="width: 0%;"></div></div>
+                        <span class="label mt-4"><span class="stat-xp">0</span> / 500 XP to next level</span>
+                    </div>
+                    <div class="card stat-card" style="border-color: rgba(52, 211, 153, 0.4);">
+                        <span class="label">Daily Streak</span>
+                        <span class="value stat-streak color-green">0 Days</span>
+                        <p class="mt-4" style="font-size:0.85rem; color:var(--text-secondary);">Solve daily coding problems or complete course modules to increase your learning streak!</p>
+                    </div>
+                    <div class="card stat-card" style="background: linear-gradient(145deg, #1a1d24 0%, #22262f 100%); border-color:var(--accent-yellow);">
+                        <span class="label">Daily Quote</span>
+                        <p class="mt-4" style="font-size:0.95rem; font-style:italic;">"The best way to predict the future is to invent it."</p>
+                        <p class="mt-4" style="font-size:0.8rem; text-align:right;">- Alan Kay</p>
+                    </div>
+                </div>
+
+                <div style="display:grid; grid-template-columns: 2fr 1fr; gap:24px;">
+                    <div class="card">
+                        <h2 class="mb-4">Today's Recommended Coding Problem</h2>
+                        <div class="flex-between">
+                            <div>
+                                <h3 class="color-yellow">Two Sum (Arrays)</h3>
+                                <p class="mt-4">Given an array of integers, return indices of the two numbers such that they add up to a specific target.</p>
+                            </div>
+                            <button class="btn-primary" onclick="document.querySelector('[data-view=\\'dsa\\']').click()">Solve Now</button>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <h2 class="mb-4">Recent Activity</h2>
+                        <ul style="list-style:none; display:flex; flex-direction:column; gap:12px; font-size:0.9rem;">
+                            <li style="display:flex; gap:8px;"><span class="color-green">✓</span> Logged in successfully</li>
+                            <li style="display:flex; gap:8px;"><span class="color-yellow">★</span> Checked daily streak</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Courses View -->
+            <section id="view-courses" class="view-section">
+                <h1>Course Catalog</h1>
+                <p class="mb-8">Build your skills. Unlock premium courses by maintaining a learning streak or pay directly.</p>
+                <div id="course-grid" class="course-grid">
+                    <!-- Injected via courses.js + app.js -->
+                </div>
+            </section>
+
+            <!-- Roadmap View -->
+            <section id="view-roadmap" class="view-section">
+                <h1 id="active-roadmap-title">Career Roadmap</h1>
+                <p>Follow these structured modules to reach your career goal. Complete related courses to check off these items automatically.</p>
+                <div class="roadmap-timeline" id="roadmap-timeline-container">
+                    <!-- Injected via JS -->
+                </div>
+            </section>
+
+            <!-- DSA Practice View -->
+            <section id="view-dsa" class="view-section">
+                <h1>DSA Practice Tracker</h1>
+                <p class="mb-8">Master Data Structures and Algorithms. Practice questions to earn XP and complete topics.</p>
+                <div id="dsa-grid" style="display:grid; grid-template-columns: repeat(2, 1fr); gap: 24px;">
+                    <!-- Injected via JS -->
+                </div>
+            </section>
+
+            <!-- Python Compiler View -->
+            <section id="view-compiler" class="view-section">
+                <h1>Python Compiler (Simulator)</h1>
+                <p class="mb-8" id="compiler-topic-focus">Focus: Write code to solve the daily problem.</p>
+                <div class="card" style="padding:0; overflow:hidden;">
+                    <div style="background:#22262f; padding:12px 24px; border-bottom:1px solid var(--border-color); display:flex; justify-content:space-between; align-items:center;">
+                        <span>main.py</span>
+                        <span class="tag free">Python 3</span>
+                    </div>
+                    <textarea style="width:100%; height:300px; background:#0f1115; color:#f5f6f8; border:none; padding:24px; font-family:monospace; font-size:1rem; outline:none;" spellcheck="false">def solve():
+    # Write your solution here
+    pass
+
+print("Testing environment ready.")
+</textarea>
+                    <div style="padding:16px; background:#1a1d24; border-top:1px solid var(--border-color); display:flex; justify-content:flex-end;">
+                        <button class="btn-primary" id="btn-run-code">Run & Verify Code</button>
+                    </div>
+                    <div style="background:#0f1115; padding:24px; border-top:1px solid var(--border-color);">
+                        <h4 style="color:var(--text-secondary); margin-bottom:12px;">Terminal Output</h4>
+                        <pre id="compiler-output" style="color:#a0a6b1; font-family:monospace;">> Waiting for execution...</pre>
+                    </div>
+                </div>
+            </section>
+
+            <!-- AI Helper View -->
+            <section id="view-ai-helper" class="view-section">
+                <h1>AI Learning Assistant</h1>
+                <p class="mb-8">Ask for coding help, explanations, or roadmap advice.</p>
+                <div class="ai-chat-container">
+                    <div class="chat-messages" id="ai-messages">
+                        <div class="chat-msg bot">Hello! I am MindSpace AI. How can I help you accelerate your learning today?</div>
+                    </div>
+                    <form class="chat-input-area" id="ai-chat-form">
+                        <input type="text" id="ai-chat-input" class="form-control" placeholder="Type your question..." autocomplete="off">
+                        <button type="submit" class="btn-primary">Send</button>
+                    </form>
+                </div>
+            </section>
+
+            <!-- To-Do View -->
+            <section id="view-todo" class="view-section">
+                <h1>Daily To-Do List</h1>
+                <p class="mb-8">Organize your study habits.</p>
+                <div style="max-width: 600px;">
+                    <form id="todo-form" class="mb-8" style="display:flex; gap:12px;">
+                        <input type="text" id="todo-input" class="form-control" placeholder="Add a new task (e.g., Read about REST APIs)" required>
+                        <button type="submit" class="btn-primary">Add</button>
+                    </form>
+                    <div id="todo-list" style="display:flex; flex-direction:column;">
+                        <!-- Injected JS -->
+                    </div>
+                </div>
+            </section>
+
+            <!-- Expert Guidance View -->
+            <section id="view-expert" class="view-section">
+                <h1>Expert Guidance (1-on-1 Mentorship)</h1>
+                <p class="mb-8">Book a session with industry veterans for resume reviews, mock interviews, or career advice.</p>
+                
+                <div class="card" style="max-width: 600px; border-color:var(--accent-yellow);">
+                    <h2 class="color-yellow mb-4">Book a Session - ₹99.00</h2>
+                    <form id="form-expert">
+                        <div class="form-group">
+                            <label>Select Mentor</label>
+                            <select class="form-control">
+                                <option>Rahul S. (Ex-Google SE)</option>
+                                <option>Priya M. (AI Lead at Meta)</option>
+                                <option>Aman D. (System Design Expert)</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Preferred Date</label>
+                            <input type="date" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Card Number</label>
+                            <input type="text" class="form-control" placeholder="xxxx-xxxx-xxxx-xxxx" required>
+                        </div>
+                        <button type="submit" class="btn-primary w-100" style="width:100%; background:var(--accent-yellow); color:#000;">Pay ₹99 & Book Now</button>
+                    </form>
+                </div>
+            </section>
+
+            <!-- Profile View -->
+            <section id="view-profile" class="view-section">
+                <h1>Your Profile</h1>
+                <div class="card mt-8" style="display:flex; gap:32px; align-items:center;">
+                    <div style="width:100px; height:100px; background:var(--accent-green); border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:3rem; color:#000; font-weight:bold;">S</div>
+                    <div>
+                        <h2 id="prof-name">Student</h2>
+                        <p class="color-green" id="prof-goal">Career Goal</p>
+                        <p class="mt-4">🎓 <span id="prof-college">University</span></p>
+                    </div>
+                </div>
+                
+                <h3 class="mt-8 mb-4">Stats Summary</h3>
+                <div class="dashboard-grid">
+                    <div class="card stat-card"><span class="label">Level</span><span class="value" id="prof-level">1</span></div>
+                    <div class="card stat-card"><span class="label">Total XP</span><span class="value color-yellow" id="prof-xp">0</span></div>
+                    <div class="card stat-card"><span class="label">Current Streak</span><span class="value color-green" id="prof-streak">0</span></div>
+                    <div class="card stat-card"><span class="label">Longest Streak</span><span class="value" id="prof-long-streak">0</span></div>
+                </div>
+            </section>
+
+            <!-- Analytics View -->
+            <section id="view-analytics" class="view-section">
+                <h1>Performance Analytics</h1>
+                <p class="mb-8">Track your learning velocity.</p>
+                
+                <div class="dashboard-grid">
+                    <div class="card stat-card"><span class="label">Total XP Earned</span><span class="value color-yellow" id="stat-total-xp">0</span></div>
+                    <div class="card stat-card"><span class="label">Courses Unlocked</span><span class="value" id="stat-courses-unlocked">0</span></div>
+                    <div class="card stat-card"><span class="label">DSA Problems Solved</span><span class="value color-green" id="stat-dsa-solved">0</span></div>
+                </div>
+
+                <div class="card mt-8">
+                    <h3 class="mb-8">Weekly Study Activity (Mock)</h3>
+                    <div style="display:flex; gap:16px; height:200px; align-items:flex-end; padding-top:20px; border-bottom:1px solid var(--border-color); border-left:1px solid var(--border-color);">
+                        <div style="flex:1; display:flex; flex-direction:column; align-items:center; gap:8px;">
+                            <div id="bar-mon" style="width:40px; background:var(--accent-green); border-radius:4px 4px 0 0; transition: height 1s; height:0%;"></div>
+                            <span style="font-size:0.8rem; color:var(--text-secondary);">Mon</span>
+                        </div>
+                        <div style="flex:1; display:flex; flex-direction:column; align-items:center; gap:8px;">
+                            <div id="bar-tue" style="width:40px; background:var(--accent-green); border-radius:4px 4px 0 0; transition: height 1s; height:0%;"></div>
+                            <span style="font-size:0.8rem; color:var(--text-secondary);">Tue</span>
+                        </div>
+                        <div style="flex:1; display:flex; flex-direction:column; align-items:center; gap:8px;">
+                            <div id="bar-wed" style="width:40px; background:var(--accent-green); border-radius:4px 4px 0 0; transition: height 1s; height:0%;"></div>
+                            <span style="font-size:0.8rem; color:var(--text-secondary);">Wed</span>
+                        </div>
+                        <div style="flex:1; display:flex; flex-direction:column; align-items:center; gap:8px;">
+                            <div id="bar-thu" style="width:40px; background:var(--accent-green); border-radius:4px 4px 0 0; transition: height 1s; height:0%;"></div>
+                            <span style="font-size:0.8rem; color:var(--text-secondary);">Thu</span>
+                        </div>
+                        <div style="flex:1; display:flex; flex-direction:column; align-items:center; gap:8px;">
+                            <div id="bar-fri" style="width:40px; background:var(--accent-green); border-radius:4px 4px 0 0; transition: height 1s; height:0%;"></div>
+                            <span style="font-size:0.8rem; color:var(--text-secondary);">Fri</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+        </main>
+
+        <!-- RIGHT SIDEBAR: POMODORO TIMER -->
+        <aside class="right-sidebar">
+            <h3 class="mb-8">Focus Timer</h3>
+            <div class="card text-center" style="border-color:var(--accent-green);">
+                <h4 style="color:var(--text-secondary);">Study Session</h4>
+                <div id="pomo-display" style="font-size:3.5rem; font-weight:700; color:var(--accent-green); margin:16px 0;">25:00</div>
+                
+                <div class="form-group text-left mt-4">
+                    <label>Set Timer (Minutes)</label>
+                    <input type="number" id="pomo-custom-time" class="form-control" value="25" min="1" max="120">
+                </div>
+                
+                <div style="display:flex; gap:12px; margin-top:24px;">
+                    <button class="btn-primary w-100" id="btn-pomo-start" style="flex:1;">Start</button>
+                    <button class="btn-secondary w-100" id="btn-pomo-reset" style="flex:1;">Reset</button>
+                </div>
+                <p class="mt-4" style="font-size:0.8rem; color:var(--text-secondary);">Completing a session awards 20 XP.</p>
+            </div>
+            
+            <div class="card mt-8" style="background: linear-gradient(to right bottom, #1a1d24, #121212);">
+                <h4 class="color-yellow mb-4">MindSpace Pro</h4>
+                <p style="font-size:0.9rem;">Upgrade your learning velocity with instant mentorship and infinite AI queries.</p>
+                <button class="btn-secondary mt-4 w-100" style="width:100%; border-color:var(--accent-yellow); color:var(--accent-yellow);">Upgrade Now</button>
+            </div>
+        </aside>
+
+    </div>
+
+    <!-- VIDEO PLAYER MODAL -->
+    <div id="video-modal" class="modal-overlay">
+        <div class="modal-content video-modal-content">
+            <div class="video-header">
+                <div>
+                    <h2 id="video-course-title" style="margin: 0; font-size: 1.5rem;">Course Title</h2>
+                    <span id="video-course-category" class="color-green" style="font-size: 0.9rem;">Category</span>
+                </div>
+                <button class="close-modal" id="close-video-modal">&times;</button>
+            </div>
+            <div class="video-body">
+                <div class="video-player-wrapper">
+                    <iframe id="youtube-iframe" src="" allowfullscreen allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"></iframe>
+                </div>
+                <div class="video-modules-list">
+                    <h3 class="mb-4">Course Modules</h3>
+                    <div id="video-modules-container">
+                        <!-- Modules injected via JS -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="js/storage.js"></script>
+    <script src="js/courses.js"></script>
+    <script src="js/app.js"></script>
+</body>
+</html>
